@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbbd88255f7c954a9c8af7b54758bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5109268076672165372, guid: f51e72a640f705a41b58f1d4a283e2c0, type: 3}
+  bullet: {fileID: 1125751112}
   turret: {fileID: 1571149760}
   enemy: {fileID: 620903246}
 --- !u!1 &620903246 stripped
@@ -495,7 +495,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -562,6 +562,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1125751112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5109268076672165372, guid: 1d7a71a8842efa14ea1241adfcda8191, type: 3}
+  m_PrefabInstance: {fileID: 1299907096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299907096
 PrefabInstance:
   m_ObjectHideFlags: 0

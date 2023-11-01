@@ -6,7 +6,7 @@ public class AIShell : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject explosion;
-    
+    Rigidbody rb;
 
     void OnCollisionEnter(Collision col)
     {
@@ -20,12 +20,13 @@ public class AIShell : MonoBehaviour
     }
     void Start()
     {
+        rb = this.GetComponent<Rigidbody>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.forward = rb.velocity;
     }
 }

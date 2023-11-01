@@ -7,18 +7,20 @@ public class FireShell : MonoBehaviour {
     public GameObject bullet;
     public GameObject turret;
     public GameObject enemy;
+    public Transform turretBase;
     float speed = 15;
     float rotSpeed = 2;
 
     void CreateBullet() 
     {
 
-        Instantiate(bullet, turret.transform.position, turret.transform.rotation);
+        GameObject shell = Instantiate(bullet, turret.transform.position, turret.transform.rotation);
+        shell.GetComponent<Rigidbody>().velocity = speed * turretBase.forward;
     }
 
     void RotateTurret()
     {
-        float? angle = CalculateAngle(true);
+        float? angle = CalculateAngle(false);
         if (angle != null)
         {
             turretBase.localEulerAngles = new Vector3(360f - (float)angle, 0f, 0f);
@@ -30,16 +32,16 @@ public class FireShell : MonoBehaviour {
         Vector3 targetDir = enemy.transform.position - this.transform.position;
         float y = targetDir.y;
         targetDir.y = 0f;
-        float x = targetDir.magnitude;
+        float x = targetDir.magnitude - 1 ;
         float gravity = 9.8f;
-        float sSpr = speed * speed;
+        float sSqr = speed * speed;
         float underTheSqrRoot = (sSqr * sSqr) - gravity * (gravity * x * x + 2 * y * sSqr);
 
         if (underTheSqrRoot > 0 )
         {
             float root = Mathf.Sqrt(underTheSqrRoot);
-            float highAngle = sSpr * root;
-            float lowAngle = sSpr * root;
+            float highAngle = sSqr * root;
+            float lowAngle = sSqr * root;
 
             if (low)
                 return (Mathf.Atan2(lowAngle, gravity * x) * Mathf.Rad2Deg);
